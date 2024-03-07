@@ -1,19 +1,21 @@
-#!/bin/python3
-"""Module documentation"""
+#!/usr/bin/python3
 
+
+'''Implementing Pascal's triangle.
+'''
 
 def pascal_triangle(n):
-    """function documentation"""
-    if n <= 0:
-        return []
-
-    triangle = []
-
-    for i in range(n):
-        row = [1] * (i + 1)  # Create a list of length i+1 filled with 1s
-        for j in range(1, i):
-            # Calculate the value at position (i, j)
-            row[j] = triangle[i-1][j-1] + triangle[i-1][j]
-        triangle.append(row)
-
-    return triangle
+    '''returns a Pascal's triangle of a given integer.
+    '''
+   
+    if type(n) is not int or n <= 0:
+         return []
+    res = [[1]]
+    for i in range(n -1):
+        temp = [0] + res[-1] + [0]
+        row = []
+        for j in range(len(res[-1]) + 1):
+           
+            row.append(temp[j] +temp[j +1])
+        res.append(row)
+    return res
