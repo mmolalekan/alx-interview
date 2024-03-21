@@ -1,13 +1,28 @@
-#!/bin/python3
-"""module documentation"""
+#!/usr/bin/python3
+"""
+module documentation
+"""
 
 
 def minOperations(n):
-    """Function definition"""
-    if n < 1 or not isinstance(n, int):
+    """
+    function documentation 
+    """
+    if not isinstance(n, int):
         return 0
-
-    for i in range(2, int(n ** 0.5) + 1):
-        if n % i == 0:
-            return i + minOperations(n // i)
-    return n
+    operation_count = 0
+    clipboard_contents = 0
+    complet = 1
+    while complet < n:
+        if clipboard_contents == 0:
+            clipboard_contents = complet
+            complet += clipboard_contents
+            operation_count += 2
+        elif n - complet > 0 and (n - complet) % complet == 0:
+            clipboard_contents = complet
+            complet += clipboard_contents
+            operation_count += 2
+        elif clipboard_contents > 0:
+            complet += clipboard_contents
+            operation_count += 1
+    return operation_count
