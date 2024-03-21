@@ -6,7 +6,7 @@ module documentation
 
 def minOperations(n):
     """
-    function documentation 
+    function documentation
     """
     if not isinstance(n, int):
         return 0
