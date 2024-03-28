@@ -9,6 +9,9 @@
 # main files
 *main.py
 
+#compiled python files
+/**/*/__pycache__
+
 # testing
 /coverage
 
